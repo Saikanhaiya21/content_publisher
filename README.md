@@ -1,24 +1,68 @@
-# README
+# Content Publisher Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
+Backend for the Content Publisher App, built with **Ruby on Rails** and JWT authentication. Handles user signup/login and CRUD operations for publications.
 
-Things you may want to cover:
+---
 
-* Ruby version
+## Features
 
-* System dependencies
+- User authentication using JWT (signup & login)
+- CRUD operations for publications
+  - Fields: `title`, `content`, `status` (draft, published, archived)
+- Proper validations and error handling
+- Meaningful HTTP status codes
+- Public API endpoint to view published publications
 
-* Configuration
+---
 
-* Database creation
+## Prerequisites
 
-* Database initialization
+- Ruby 3+  
+- Rails 7+   
+- SQLite3 (or other DB supported by Rails)  
 
-* How to run the test suite
+---
 
-* Services (job queues, cache servers, search engines, etc.)
+## Setup
 
-* Deployment instructions
+**Clone the repository:**
+```bash
+git clone https://github.com/Saikanhaiya21/content_publisher.git
+cd content_publisher
+```
+**Install dependencies:**
+```bash
+bundle install
+```
+**Set up the database:**
+```bash
+rails db:create db:migrate
+```
 
-* ...
+**Start Server:**
+```bash
+rails server
+```
+## API Endpoints
+**Authentication:**
+```bash
+Method          Endpoint          Description
+POST            /signup           Create new user
+POST           /login             Login user & get JWT token
+```
+
+**Publications (Protected):**
+```bash
+Method          Endpoint                Description
+GET            /publications            Get all user's publications
+POST           /publications            Create a new publication
+GET            /publications/:id        Update a publication
+PUT           /publications/:id         Delete a publication
+```
+
+**Public View (No login required):**
+```bash
+Method          Endpoint              Description
+GET            /public/published      List all published publications
+```
