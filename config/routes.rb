@@ -7,4 +7,17 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  post '/signup', to: 'auth#signup'
+  post '/login', to: 'auth#login'
+
+  get '/public/published', to: 'publications#published'
+
+  resources :publications do
+    collection do
+      delete :bulk_destroy
+      post :undo_delete
+      get :deleted
+    end
+  end
 end
