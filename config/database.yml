@@ -83,6 +83,4 @@ test:
 #
 production:
   <<: *default
-  database: content_publisher_production
-  username: content_publisher
-  password: <%= ENV["CONTENT_PUBLISHER_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
